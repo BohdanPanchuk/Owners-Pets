@@ -1,0 +1,32 @@
+﻿<div>
+    <h1 style="text-align:center">All Users</h1>
+    <div style="text-align:center">
+        <form class="form-inline">
+            <div class="form-group">
+                <input class="form-control" name="name" type="text" placeholder="Enter Pet Owner's Name" ng-model="userName" />
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="addUser()">Add</button>
+        </form>
+    </div>
+    <hr />
+    <h4 style="text-align:center">Total count: {{Users.length}}</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="text-align:center">Name</th>
+                <th style="text-align:center">Pets Count</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="User in filteredUsers">
+                <td align="center"><a href="/User/{{User.Id}}">{{User.Name}}</a></td>
+                <td align="center">{{User.PetsCount}}</td>
+                <td width="1px"><button class="btn btn-danger" ng-click="deleteUser(User.Id)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="text-align:center">
+        <ul style="text-align:center" uib-pagination direction-links="false" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages"></ul>
+    </div>
+</div>
